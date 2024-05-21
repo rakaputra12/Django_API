@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Netbox Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#id_pod_count').on('change', function() {
+                var podCount = $(this).val();
+                var container = $('#pod_fields_container');
+                container.empty(); // Clear previous fields
+                
+                // Generate fields based on podCount
+                for (var i = 1; i <= podCount; i++) {
+                    container.append('<label for="id_pod_' + i + '">Pod-' + i + '</label>');
+                    container.append('<input type="text" id="id_pod_' + i + '" name="pod_' + i + '"><br>');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Netbox Form</h1>
+    <form id="netbox_form" method="post">
+        {% csrf_token %}
+        {{ form.hostname.label_tag }} {{ form.hostname }}
+        {{ form.username.label_tag }} {{ form.username }}
+        {{ form.pod_count.label_tag }} {{ form.pod_count }}
+        <div id="pod_fields_container"></div>
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'netbox_list' %}">Back to Netbox List</a>
+</body>
+</html>

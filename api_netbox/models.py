@@ -1,5 +1,5 @@
+# models.py
 from django.db import models
-from django.utils import timezone
 
 class Netbox(models.Model):
     hostname = models.CharField(max_length=200)
@@ -7,5 +7,6 @@ class Netbox(models.Model):
     created_at = models.DateField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     pod_count = models.IntegerField(null=True)
+    pods = models.JSONField(null=True)
 
-    
+

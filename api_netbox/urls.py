@@ -20,6 +20,10 @@ from api_netbox import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('netbox/', views.netbox_list),
-    path('netbox/<int:id>', views.netbox_details)
+    path('netbox/create/', views.netbox_create, name='netbox_create'),
+    path('netbox/update/<int:pk>/', views.netbox_update, name='netbox_update'),
+    path('netbox/delete/<int:pk>/', views.NetboxDeleteView.as_view(), name='netbox_delete'), 
+    path('success/', views.success, name='success'),
+    path('netbox/', views.netbox_list, name='netbox_list'),
+
 ]

@@ -1,6 +1,6 @@
+# serializers.py
 from rest_framework import serializers
 from .models import Netbox
-
 
 class NetboxSerializer(serializers.ModelSerializer):
 
