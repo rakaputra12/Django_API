@@ -6,8 +6,6 @@ from django.views.generic.edit import DeleteView
 
 
 
-
-
 class NetboxDeleteView(DeleteView):
     model = Netbox
     template_name = 'netbox_confirm_delete.html'
